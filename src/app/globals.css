@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-blue: #00a8bf;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,21 +27,53 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.hero {
+  min-height: 85vh;
+}
+
+.primary-text {
+  color: var(--primary-blue);
+}
+
+.border-1 {
+  border-width: 1px;
+}
+
+.border-primary {
+  border-color: var(--primary-blue);
+}
+
+.btn-primary {
+  transition: all 0.5s ease;
+  @apply py-2 px-7 border-1 rounded border-primary;
+  color: var(--primary-blue);
+
+  &:hover {
+    background-color: var(--primary-blue);
+    color: #000;
+  }
+}
+
+.propic {
+  width: 100%;
+  border-radius: 50%;
+}
+
 @layer base {
   h1 {
-    @apply text-4xl;
+    @apply text-6xl font-semibold;
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-5xl;
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-4xl;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-xl md:text-3xl;
   }
 }
 
