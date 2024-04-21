@@ -116,11 +116,11 @@ export default function Home() {
             About
           </h2>
           <p className="mb-4">
-            Hello! I'm based in Rochester, NY after having lived in Boston, MA
-            for about 7 years. My professional career has been focused around
+            Hello! I&apos;m based in Rochester, NY after having lived in Boston,
+            MA for about 7 years. My professional career has been focused around
             mainly Front-End technologies, but I am at the stage of my career
             where I would like to expand out as a Full-Stack developer.
-            Currently, I've been learning Node.JS and Next.JS in order to
+            Currently, I&apos;ve been learning Node.JS and Next.JS in order to
             achieve this goal.
           </p>
 
