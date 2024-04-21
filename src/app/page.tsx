@@ -1,15 +1,35 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import profilePic from "./images/profile_pic.jpg";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useAnimate,
+  useAnimation,
+  useInView,
+  useScroll,
+} from "framer-motion";
+import { skillSet } from "./utils/constants";
 
 export default function Home() {
+  const { scrollYProgress: completionProgress } = useScroll();
+
+  const containerRef = useRef(null);
+
+  const isInView = useInView(containerRef, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("show");
+    }
+  }, [isInView, mainControls]);
   return (
     <div className="min-h-screen">
       {/** Navbar */}
-      <nav className="w-full fixed top-0 font-someType text-center p-4 bg-black z-50">
+      <nav className="w-full fixed top-0 font-someType text-center px-4 py-7 bg-black z-50">
         <div
           className="flex justify-between max-w-5xl mx-auto"
           style={{ backgroundColor: "#000" }}
@@ -91,32 +111,65 @@ export default function Home() {
       </main>
 
       <div style={{ height: "100vh", backgroundColor: "#171717" }}>
+        <div className="mx-auto max-w-2xl flex flex-col item-center pt-8 px-4">
+          <h2 className="pb-4 italic font-light primary-text text-center">
+            About
+          </h2>
+          <p className="mb-4">
+            Hello! I'm based in Rochester, NY after having lived in Boston, MA
+            for about 7 years. My professional career has been focused around
+            mainly Front-End technologies, but I am at the stage of my career
+            where I would like to expand out as a Full-Stack developer.
+            Currently, I've been learning Node.JS and Next.JS in order to
+            achieve this goal.
+          </p>
+
+          <p className="mb-16">
+            Outside of coding, I enjoy baking, video/board games, crocheting,
+            and painting!
+          </p>
+        </div>
+
         {/* Skillset */}
-        <div className="mx-auto max-w-5xl flex flex-col item-center pt-8">
+        <div className="mx-auto max-w-2xl flex flex-col item-center pt-8 px-4">
           <h2 className="pb-4 italic font-light primary-text text-center">
             Skillset
           </h2>
-          <div className="skill__container flex">
-            <div className="skill flex items-center font-semibold mr-5">
-              <Image
-                alt={"React.JS logo"}
-                src="https://www.svgrepo.com/show/452092/react.svg"
-                height={30}
-                width={30}
-              />
-              <p className="ml-1">React</p>
-            </div>
-
-            <div className="skill flex items-center font-semibold">
-              <Image
-                alt={"JS logo"}
-                src="https://www.svgrepo.com/show/452045/js.svg"
-                height={30}
-                width={30}
-              />
-              <p className="ml-1">Javascript</p>
-            </div>
-          </div>
+          <p className="text-center mb-4">
+            These are the main technologies and tools that were the focus of my
+            professional life.
+          </p>
+          <motion.div
+            className="skill__container flex flex-wrap justify-center"
+            variants={{
+              hidden: { opacity: 0, y: -100 },
+              show: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
+            }}
+            initial="hidden"
+            animate={mainControls}
+            ref={containerRef}
+          >
+            {skillSet.map((skill) => {
+              return (
+                <motion.div
+                  key={skill.name}
+                  className="skill flex items-center font-semibold mr-5 mb-5"
+                  variants={{
+                    hidden: { opacity: 0, y: -100 },
+                    show: { opacity: 1, y: 0 },
+                  }}
+                >
+                  <Image
+                    alt={`${skill.name} logo`}
+                    src={skill.imgUrl}
+                    height={30}
+                    width={30}
+                  />
+                  <p className="ml-1">{skill.name}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </div>
