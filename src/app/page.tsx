@@ -4,18 +4,10 @@ import { useEffect, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import profilePic from "./images/profile_pic.jpg";
 import Image from "next/image";
-import {
-  motion,
-  useAnimate,
-  useAnimation,
-  useInView,
-  useScroll,
-} from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { skillSet } from "./utils/constants";
 
 export default function Home() {
-  const { scrollYProgress: completionProgress } = useScroll();
-
   const containerRef = useRef(null);
 
   const isInView = useInView(containerRef, { once: true });
@@ -47,17 +39,16 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, type: "spring", bounce: 0.4 }}
           >
-            <a className="btn-primary" href="#">
+            <a className="btn-primary" href="#" target="_blank">
               Resume
             </a>
           </motion.div>
         </div>
       </nav>
-
       <div className="block md:hidden" style={{ minHeight: "75px" }}></div>
 
       {/** Hero */}
-      <main className="h-screen p-4 flex items-center flex-col-reverse md:flex-row text-center max-w-5xl mx-auto">
+      <main className="min-h-screen p-4 flex items-center flex-col-reverse md:flex-row text-center max-w-5xl mx-auto">
         <motion.div
           className="flex-1"
           style={{ minHeight: "220px", minWidth: "220px" }}
@@ -110,8 +101,9 @@ export default function Home() {
         </div>
       </main>
 
-      <div style={{ height: "100vh", backgroundColor: "#171717" }}>
-        <div className="mx-auto max-w-2xl flex flex-col item-center pt-8 px-4">
+      <div style={{ backgroundColor: "#171717" }}>
+        {/** About me */}
+        <div className="mx-auto max-w-4xl flex flex-col item-center pt-8 px-4 mb-5 md:mb-16">
           <h2 className="pb-4 italic font-light primary-text text-center">
             About
           </h2>
@@ -124,7 +116,7 @@ export default function Home() {
             achieve this goal.
           </p>
 
-          <p className="mb-16">
+          <p>
             Outside of coding, I enjoy baking, video/board games, crocheting,
             and painting!
           </p>
@@ -169,6 +161,62 @@ export default function Home() {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+
+        {/** Projects */}
+        <div className="mx-auto max-w-4xl flex flex-col item-center pt-8 px-4">
+          <h2 className="pb-4 italic font-light primary-text text-center">
+            Projects
+          </h2>
+          <motion.div className="project">
+            <h3 className="font-someType mb-2">Flexcar</h3>
+            <div className="flex flex-col md:flex-row">
+              <div className="flex-1 mr-5">
+                <Image
+                  src={require("./images/flexcar.png")}
+                  alt="Flexcar Snapshot"
+                />
+              </div>
+              <p className="flex-1">
+                Flexcar was a side project turned into a company. My main role
+                as one of the first 4 devs was to create React components
+                library that would continue to be the foundation as the company
+                grew.
+              </p>
+            </div>
+          </motion.div>
+          <motion.div className="project">
+            <h3 className="font-someType">Flexcar</h3>
+            <div className="flex flex-row">
+              <Image
+                src={require("./images/flexcar.png")}
+                alt="Flexcar Snapshot"
+                width={500}
+              />
+              <p>
+                Flexcar was a side project turned into a company. My main role
+                as one of the first 4 devs was to create React components
+                library that would continue to be the foundation as the company
+                grew.
+              </p>
+            </div>
+          </motion.div>
+          <motion.div className="project">
+            <h3 className="font-someType">Flexcar</h3>
+            <div className="flex flex-row">
+              <Image
+                src={require("./images/flexcar.png")}
+                alt="Flexcar Snapshot"
+                width={500}
+              />
+              <p>
+                Flexcar was a side project turned into a company. My main role
+                as one of the first 4 devs was to create React components
+                library that would continue to be the foundation as the company
+                grew.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

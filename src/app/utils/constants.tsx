@@ -14,8 +14,8 @@ export const skillSet: Skills[] = [
     name: "Javascript",
     imgUrl: "https://www.svgrepo.com/show/452045/js.svg",
   },
-  { name: "HTML", imgUrl: "https://www.svgrepo.com/show/508837/html5-01.svg" },
-  { name: "CSS", imgUrl: "https://www.svgrepo.com/show/508795/css3-02.svg" },
+  { name: "HTML", imgUrl: "https://www.svgrepo.com/show/452228/html-5.svg" },
+  { name: "CSS", imgUrl: "https://www.svgrepo.com/show/452185/css-3.svg" },
   { name: "SASS", imgUrl: "https://www.svgrepo.com/show/374061/sass.svg" },
   {
     name: "Bootstrap",
