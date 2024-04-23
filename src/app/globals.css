@@ -8,7 +8,7 @@
 
 body {
   color: #fff;
-  background-color: #000;
+  background-color: #020202;
 }
 
 @keyframes fadeInAnimation {
@@ -24,22 +24,46 @@ body {
   color: var(--primary-blue);
 }
 
-.border-1 {
-  border-width: 1px;
-}
-
 .border-primary {
   border-color: var(--primary-blue);
 }
 
 .project {
   background-color: rgba(0, 0, 0, 0.2);
-  @apply p-6 mb-10 rounded;
+  @apply p-6 mb-10 rounded-2xl;
+}
+
+.image-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-blue);
+  opacity: 80%;
+  transition: all 0.5s ease;
+
+  @apply rounded-xl;
+}
+
+.image-container:hover:before {
+  background-color: transparent;
+}
+
+.pill-tag {
+  @apply rounded-full border-primary border-2 py-0.5 px-2 font-someType mr-2 mb-2;
+}
+
+.pill-tag:hover {
+  background-color: var(--primary-blue);
+  color: #000;
+  transition: all 0.5s ease;
 }
 
 .btn-primary {
   transition: all 0.5s ease;
-  @apply py-2 px-7 border-1 rounded border-primary;
+  @apply py-2 px-7 border rounded border-primary;
   color: var(--primary-blue);
 
   &:hover {

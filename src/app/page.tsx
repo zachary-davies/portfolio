@@ -5,7 +5,10 @@ import Typewriter from "typewriter-effect";
 import profilePic from "./images/profile_pic.jpg";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { skillSet } from "./utils/constants";
+import { projects, skillSet } from "./utils/constants";
+import SkillContainer from "./components/SkillContainer";
+import ProjectContainer from "./components/ProjectContainer";
+import Tile from "./components/Tile";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -19,7 +22,12 @@ export default function Home() {
     }
   }, [isInView, mainControls]);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
+        {Array.from(Array(20 * 12), (i) => (
+          <Tile key={i} />
+        ))}
+      </section>
       {/** Navbar */}
       <nav className="w-full fixed top-0 font-someType text-center px-4 py-7 bg-black z-50">
         <div
@@ -48,7 +56,7 @@ export default function Home() {
       <div className="block md:hidden" style={{ minHeight: "75px" }}></div>
 
       {/** Hero */}
-      <main className="min-h-screen p-4 flex items-center flex-col-reverse md:flex-row text-center max-w-5xl mx-auto">
+      <main className=" pointer-events-none min-h-screen p-4 flex items-center flex-col-reverse md:flex-row text-center max-w-5xl mx-auto z-40 relative">
         <motion.div
           className="flex-1"
           style={{ minHeight: "220px", minWidth: "220px" }}
@@ -143,22 +151,7 @@ export default function Home() {
           >
             {skillSet.map((skill) => {
               return (
-                <motion.div
-                  key={skill.name}
-                  className="skill flex items-center font-semibold mr-5 mb-5"
-                  variants={{
-                    hidden: { opacity: 0, y: -100 },
-                    show: { opacity: 1, y: 0 },
-                  }}
-                >
-                  <Image
-                    alt={`${skill.name} logo`}
-                    src={skill.imgUrl}
-                    height={30}
-                    width={30}
-                  />
-                  <p className="ml-1">{skill.name}</p>
-                </motion.div>
+                <SkillContainer key={skill.name} skill={skill}></SkillContainer>
               );
             })}
           </motion.div>
@@ -169,55 +162,15 @@ export default function Home() {
           <h2 className="pb-4 italic font-light primary-text text-center">
             Projects
           </h2>
-          <motion.div className="project">
-            <h3 className="font-someType mb-2">Flexcar</h3>
-            <div className="flex flex-col md:flex-row">
-              <div className="flex-1 mr-5">
-                <Image
-                  src={require("./images/flexcar.png")}
-                  alt="Flexcar Snapshot"
-                />
-              </div>
-              <p className="flex-1">
-                Flexcar was a side project turned into a company. My main role
-                as one of the first 4 devs was to create React components
-                library that would continue to be the foundation as the company
-                grew.
-              </p>
-            </div>
-          </motion.div>
-          <motion.div className="project">
-            <h3 className="font-someType">Flexcar</h3>
-            <div className="flex flex-row">
-              <Image
-                src={require("./images/flexcar.png")}
-                alt="Flexcar Snapshot"
-                width={500}
-              />
-              <p>
-                Flexcar was a side project turned into a company. My main role
-                as one of the first 4 devs was to create React components
-                library that would continue to be the foundation as the company
-                grew.
-              </p>
-            </div>
-          </motion.div>
-          <motion.div className="project">
-            <h3 className="font-someType">Flexcar</h3>
-            <div className="flex flex-row">
-              <Image
-                src={require("./images/flexcar.png")}
-                alt="Flexcar Snapshot"
-                width={500}
-              />
-              <p>
-                Flexcar was a side project turned into a company. My main role
-                as one of the first 4 devs was to create React components
-                library that would continue to be the foundation as the company
-                grew.
-              </p>
-            </div>
-          </motion.div>
+
+          {projects.map((project, index) => {
+            return (
+              <ProjectContainer
+                project={project}
+                key={project.name}
+              ></ProjectContainer>
+            );
+          })}
         </div>
       </div>
     </div>

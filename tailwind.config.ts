@@ -12,6 +12,9 @@ const config: Config = {
         inter: "var(--font-inter)",
         someType: "var(--font-someType)",
       },
+      gridTemplateColumns: {
+        20: "repeat(20, minmax(0, 1fr))",
+      },
     },
   },
   plugins: [],
