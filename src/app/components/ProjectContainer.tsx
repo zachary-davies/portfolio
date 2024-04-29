@@ -5,10 +5,11 @@ import { ProjectType } from "../utils/constants";
 
 type ProjectContainerProps = {
   project: ProjectType;
+  reverse?: boolean;
 };
 
 const ProjectContainer: React.FC<ProjectContainerProps> = (props) => {
-  const { project } = props;
+  const { project, reverse = false } = props;
 
   const containerRef = useRef(null);
 
@@ -33,7 +34,11 @@ const ProjectContainer: React.FC<ProjectContainerProps> = (props) => {
       viewport={{ root: containerRef }}
     >
       <h3 className="font-someType mb-2">{project.name}</h3>
-      <div className="flex flex-col md:flex-row">
+      <div
+        className={`flex flex-col ${
+          reverse ? "md:flex-row-reverse" : "md:flex-row"
+        }`}
+      >
         <div className="flex-1 mr-5 relative rounded image-container mb-4 md:mb-0">
           <img
             src={project.imgUrl}

@@ -68,12 +68,14 @@ body {
 
 .btn-primary {
   transition: all 0.5s ease;
-  @apply py-2 px-7 border rounded border-primary;
+  @apply py-2 px-7 border rounded border-primary max-w-[120px];
   color: var(--primary-blue);
 
   &:hover {
     background-color: var(--primary-blue);
     color: #000;
+    transform: scale(1.1);
+    font-weight: 600;
   }
 }
 

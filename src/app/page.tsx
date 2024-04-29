@@ -29,19 +29,16 @@ export default function Home() {
   return (
     <div className="min-h-screen relative">
       {/**Tile Background */}
-      <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
+      {/* <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
         {Array.from(Array(20 * 12), (i) => (
           <Tile key={i} />
         ))}
-      </section>
+      </section> */}
 
       {/** Navbar */}
-      <nav className="w-full fixed top-0 font-someType text-center px-4 py-7 bg-black z-50">
-        <div
-          className="flex justify-between max-w-5xl mx-auto"
-          style={{ backgroundColor: "#000" }}
-        >
-          <div style={{ minWidth: "65px" }}>
+      <nav className="w-full fixed top-0 font-someType text-center px-4 py-4 bg-black z-50">
+        <div className="flex justify-between max-w-4xl mx-auto px-4 bg-black">
+          <div className="min-w-[65px] flex items-center">
             <Typewriter
               options={{ cursor: " " }}
               onInit={(typewriter) => {
@@ -54,12 +51,8 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, type: "spring", bounce: 0.4 }}
           >
-            <a
-              className="btn-primary"
-              href="/Zachary_Davies_Resume.pdf"
-              download
-            >
-              Resume
+            <a href="/Zachary_Davies_Resume.pdf" download>
+              <button className="btn-primary">Resume</button>
             </a>
           </motion.div>
         </div>
@@ -181,7 +174,8 @@ export default function Home() {
               <ProjectContainer
                 project={project}
                 key={project.name}
-              ></ProjectContainer>
+                reverse={index % 2 === 0}
+              />
             );
           })}
         </div>
@@ -192,11 +186,26 @@ export default function Home() {
             Contact
           </h2>
           <div className="project">
-            <form>
-              <label>
-                <span> Your Name</span>
-                <input type="text" name="name" value={form.email}></input>
-              </label>
+            <form className="flex flex-col">
+              <input
+                className="rounded mb-3 h-10 bg-[#505050] p-2 text-white"
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+              <input
+                className="rounded mb-3 h-10 bg-[#505050] p-2"
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+              <textarea
+                className="rounded mb-3 bg-[#505050] p-2 h-52"
+                name="message"
+                placeholder="Connect with me and say hi!"
+              />
+
+              <button className="btn-primary">Send</button>
             </form>
           </div>
         </div>
