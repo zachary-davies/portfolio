@@ -65,23 +65,23 @@ export const projects: ProjectType[] = [
   },
   {
     name: "Zipcar",
-    imgUrl: "flexcar.png",
+    imgUrl: "zipcar.png",
     description:
       "Zipcar is a car sharing web application with an accomponying phone application. This codebase was already a decade old and well maintained, so I here learned to create meaningful contributions within an already existing structure.",
     skills: ["React", "Redux", "TypeScript", "SASS"],
   },
   {
     name: "RightTrack",
-    imgUrl: "flexcar.png",
+    imgUrl: "righttrack.jpg",
     description:
       "RightTrack is a drive monitoring app run by Liberty Mutual. This was my first introduction in React/React Native, but I was able to pick it up quickly and make sizable contributions to the project. My in-depth knowledge of the app helped me aid other members of the team when running into debugging issues.",
     skills: ["React Native", "Redux", "SASS"],
   },
   {
     name: "Hyundai Canada",
-    imgUrl: "flexcar.png",
+    imgUrl: "hyundai.png",
     description:
-      "Hyundai Canada tasked me with creating a Special Offers page to show off any particular deals they might have. This was my first big project outside of college, and I was excited to put my skills to use. I worked with another Junior dev, and we created a web page that is live to this day",
+      "Hyundai Canada tasked me with creating a Special Offers page to show off any particular deals they might have. This was my first big project outside of college, and I was excited to put my skills to use. I worked with another Junior dev, and we created a web page that is live to this day.",
     skills: ["HTML", "CSS", "Javascript"],
   },
 ];

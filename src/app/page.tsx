@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Typewriter from "typewriter-effect";
-import profilePic from "./images/profile_pic.jpg";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { projects, skillSet } from "./utils/constants";
@@ -11,9 +10,15 @@ import ProjectContainer from "./components/ProjectContainer";
 import Tile from "./components/Tile";
 
 export default function Home() {
-  const containerRef = useRef(null);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const isInView = useInView(containerRef, { once: true });
+  const skillContainerRef = useRef(null);
+
+  const isInView = useInView(skillContainerRef, { once: true });
   const mainControls = useAnimation();
 
   useEffect(() => {
@@ -23,11 +28,13 @@ export default function Home() {
   }, [isInView, mainControls]);
   return (
     <div className="min-h-screen relative">
+      {/**Tile Background */}
       <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
         {Array.from(Array(20 * 12), (i) => (
           <Tile key={i} />
         ))}
       </section>
+
       {/** Navbar */}
       <nav className="w-full fixed top-0 font-someType text-center px-4 py-7 bg-black z-50">
         <div
@@ -47,7 +54,11 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, type: "spring", bounce: 0.4 }}
           >
-            <a className="btn-primary" href="#" target="_blank">
+            <a
+              className="btn-primary"
+              href="/Zachary_Davies_Resume.pdf"
+              download
+            >
               Resume
             </a>
           </motion.div>
@@ -56,19 +67,21 @@ export default function Home() {
       <div className="block md:hidden" style={{ minHeight: "75px" }}></div>
 
       {/** Hero */}
-      <main className=" pointer-events-none min-h-screen p-4 flex items-center flex-col-reverse md:flex-row text-center max-w-5xl mx-auto z-40 relative">
+      <main className=" pointer-events-none min-h-screen p-4 flex items-center flex-col-reverse justify-evenly md:flex-row text-center max-w-5xl mx-auto z-40 relative">
         <motion.div
-          className="flex-1"
-          style={{ minHeight: "220px", minWidth: "220px" }}
+          className="flex-0 md:flex-1 min-w-[220px] min-h-[220px] relative"
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", bounce: 0.4 }}
         >
           <Image
-            src={profilePic}
+            src="profile_pic.jpg"
             alt="Profile picture of Zachary Davies"
             className="propic"
+            width={220}
+            height={220}
             priority
+            quality={95}
           />
         </motion.div>
         <div className="flex flex-none md:flex-1 flex-col">
@@ -147,7 +160,7 @@ export default function Home() {
             }}
             initial="hidden"
             animate={mainControls}
-            ref={containerRef}
+            ref={skillContainerRef}
           >
             {skillSet.map((skill) => {
               return (
@@ -171,6 +184,21 @@ export default function Home() {
               ></ProjectContainer>
             );
           })}
+        </div>
+
+        {/** Contact */}
+        <div className="mx-auto max-w-4xl flex flex-col item-center pt-8 px-4">
+          <h2 className="pb-4 italic font-light primary-text text-center">
+            Contact
+          </h2>
+          <div className="project">
+            <form>
+              <label>
+                <span> Your Name</span>
+                <input type="text" name="name" value={form.email}></input>
+              </label>
+            </form>
+          </div>
         </div>
       </div>
     </div>

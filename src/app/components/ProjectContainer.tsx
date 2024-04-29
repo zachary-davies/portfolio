@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { ProjectType } from "../utils/constants";
 
 type ProjectContainerProps = {
@@ -24,7 +24,7 @@ const ProjectContainer: React.FC<ProjectContainerProps> = (props) => {
     <motion.div
       className="project"
       variants={{
-        hidden: { opacity: 0, x: 100 },
+        hidden: { opacity: 0, x: -100 },
         show: { opacity: 1, x: 0 },
       }}
       initial="hidden"
@@ -34,11 +34,11 @@ const ProjectContainer: React.FC<ProjectContainerProps> = (props) => {
     >
       <h3 className="font-someType mb-2">{project.name}</h3>
       <div className="flex flex-col md:flex-row">
-        <div className="flex-1 mr-5 relative rounded image-container">
-          <Image
-            src={require(`../images/${project.imgUrl}`)}
+        <div className="flex-1 mr-5 relative rounded image-container mb-4 md:mb-0">
+          <img
+            src={project.imgUrl}
             alt={`${project.name} Snapshot`}
-            className="rounded-xl"
+            className="rounded-xl max-h-[280px]"
             ref={containerRef}
           />
         </div>
