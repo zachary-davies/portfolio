@@ -4,11 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { projects, skillSet } from "./utils/constants";
+import { skillSet } from "./utils/constants";
 import SkillContainer from "./components/SkillContainer";
-import ProjectContainer from "./components/ProjectContainer";
 import Tile from "./components/Tile";
-import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 
 export default function Home() {
@@ -31,11 +29,11 @@ export default function Home() {
   return (
     <div className="min-h-screen relative">
       {/**Tile Background */}
-      {/* <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
+      <section className="w-full grid grid-cols-20 h-screen absolute overflow-y-clip">
         {Array.from(Array(20 * 12), (i) => (
           <Tile key={i} />
         ))}
-      </section> */}
+      </section>
 
       {/** Navbar */}
       <nav className="w-full fixed top-0 font-someType text-center px-4 py-4 bg-black z-50">
@@ -167,9 +165,6 @@ export default function Home() {
 
         {/** Projects */}
         <Projects />
-
-        {/** Contact */}
-        <Contact />
       </div>
     </div>
   );

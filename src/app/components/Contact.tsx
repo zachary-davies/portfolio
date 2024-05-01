@@ -1,5 +1,4 @@
 import React from "react";
-import { sendEmail } from "../actions/sendEmail";
 
 const Contact: React.FC = () => {
   return (
@@ -8,12 +7,7 @@ const Contact: React.FC = () => {
         Contact
       </h2>
       <div className="project">
-        <form
-          className="flex flex-col"
-          action={async (formData) => {
-            await sendEmail(formData);
-          }}
-        >
+        <form className="flex flex-col">
           <input
             className="rounded mb-3 h-10 bg-[#505050] p-2 text-white"
             type="text"
