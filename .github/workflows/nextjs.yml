@@ -24,11 +24,16 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Read a secret
+        run: echo "This is my secret ${{ secrets.RESEND_API_KEY }}"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager

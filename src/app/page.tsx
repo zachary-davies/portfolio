@@ -8,6 +8,8 @@ import { projects, skillSet } from "./utils/constants";
 import SkillContainer from "./components/SkillContainer";
 import ProjectContainer from "./components/ProjectContainer";
 import Tile from "./components/Tile";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 
 export default function Home() {
   const [form, setForm] = useState({
@@ -164,51 +166,10 @@ export default function Home() {
         </div>
 
         {/** Projects */}
-        <div className="mx-auto max-w-4xl flex flex-col item-center pt-8 px-4">
-          <h2 className="pb-4 italic font-light primary-text text-center">
-            Projects
-          </h2>
-
-          {projects.map((project, index) => {
-            return (
-              <ProjectContainer
-                project={project}
-                key={project.name}
-                reverse={index % 2 === 0}
-              />
-            );
-          })}
-        </div>
+        <Projects />
 
         {/** Contact */}
-        <div className="mx-auto max-w-4xl flex flex-col item-center pt-8 px-4">
-          <h2 className="pb-4 italic font-light primary-text text-center">
-            Contact
-          </h2>
-          <div className="project">
-            <form className="flex flex-col">
-              <input
-                className="rounded mb-3 h-10 bg-[#505050] p-2 text-white"
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-              <input
-                className="rounded mb-3 h-10 bg-[#505050] p-2"
-                type="text"
-                name="email"
-                placeholder="Email"
-              />
-              <textarea
-                className="rounded mb-3 bg-[#505050] p-2 h-52"
-                name="message"
-                placeholder="Connect with me and say hi!"
-              />
-
-              <button className="btn-primary">Send</button>
-            </form>
-          </div>
-        </div>
+        <Contact />
       </div>
     </div>
   );
