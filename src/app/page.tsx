@@ -51,7 +51,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, type: "spring", bounce: 0.4 }}
           >
-            <a href="/Zachary_Davies_Resume.pdf" download>
+            <a href="Zachary_Davies_Resume.pdf" download>
               <button className="btn-primary">Resume</button>
             </a>
           </motion.div>
